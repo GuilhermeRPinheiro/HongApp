@@ -1,0 +1,110 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "marlon@teste.com",
+      "password": "adminpassword",
+      "name": "MarlonTeste",
+      "adress": "Rua 123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "email": "guilherme@teste.com",
+      "password": "adminpassword",
+      "name": "GuilhermeTeste",
+      "adress": "Rua 123",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "email": "otavio@teste.com",
+      "password": "123456789",
+      "name": "Otavio",
+      "adress": "Rua 123",
+      "role": "user"
+    },
+    {
+      "id": 4,
+      "email": "christian@teste.com",
+      "password": "123456789",
+      "name": "Christian",
+      "adress": "Rua 123",
+      "role": "user"
+    },
+    {
+      "id": 5,
+      "email": "luis@teste.com",
+      "password": "123456789",
+      "name": "Luis",
+      "adress": "Rua 123",
+      "role": "user"
+    },
+    {
+      "id": 6,
+      "email": "pablo@teste.com",
+      "password": "123456789",
+      "name": "Pablo",
+      "adress": "Rua 123",
+      "role": "user"
+    }
+
+  ], 
+  "pratos": [
+    {
+        "id": "prod_1",
+        "name": "Yakissoba de Camarão",
+        "description": "Camarões salteados com legumes frescos e molho oriental.",
+        "price": "39.90",
+        "imageURL": "/images/Yaki_Camarao.svg",
+        "category": "Yakissoba",
+        "status": "diponível"
+    },
+    {
+        "id": "prod_2",
+        "name": "Yakissoba de Vegetariano",
+        "description": "Legumes temperados com molho 100% vegetal.",
+        "price": "32.90",
+        "imageURL": "/images/Yaki_Vegetariano.svg",
+        "category": "Yakissoba",
+        "status": "diponível"
+    },
+    {
+        "id": "prod_3",
+        "name": "Yakissoba de Porco",
+        "description": "Barriga de porco caramelizada com molho picante.",
+        "price": "42.90",
+        "imageURL": "/images/Yaki_Porco.svg",
+        "category": "Yakissoba",
+        "status": "diponível"
+    },
+    {
+        "id": "prod_4",
+        "name": "Guioza de Porco (7unid)",
+        "description": "Pastéis japoneses recheados, crocantes e suculentos por dentro.",
+        "price": "24.90",
+        "imageURL": "/images/Guioza_Porco.svg",
+        "category": "Entradas",
+        "status": "diponível"
+    },
+    {
+        "id": "prod_5",
+        "name": "Rolinho Primaver (5unid)",
+        "description": "Clássico recheado com legumes, servido com molho agridoce.",
+        "price": "19.90",
+        "imageURL": "/images/Rolinho_Primavera.svg",
+        "category": "Entradas",
+        "status": "diponível"
+    },
+    {
+        "id": "prod_6",
+        "name": "Shimeji na Manteiga",
+        "description": "Cogumelos salteados com manteiga e cebolinha.",
+        "price": "27.90",
+        "imageURL": "/images/Shimeji_Manteiga.svg",
+        "category": "Entradas",
+        "status": "diponível"
+    }
+
+  ]
+}

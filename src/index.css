@@ -2,3 +2,7 @@
 @plugin "flowbite-react/plugin/tailwindcss";
 @source "../.flowbite-react/class-list.json";
 @plugin "daisyui";
+
+:root{
+    background-color: #A62C2C;
+}
