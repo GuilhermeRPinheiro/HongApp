@@ -8,13 +8,13 @@ import LoginPage from './Pages/Login';
 import RegisterPage from './Pages/Register';
 import MenuPage from './Pages/Menu';
 import ChartPage from './Pages/Carrinho';
-
+import { MyNavbar } from './Components/Navbar'
 
 
 function App() {
   return (
     <Router>
-      <RegisterPage />
+      <MyNavbar/>
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<HomePage />} />
