@@ -50,7 +50,7 @@ function LoginPage(){
   };
 
   return(
-    <section className="min-h-screen flex flex-col justify-center items-center bg-[#C83226]">
+    <section className="min-h-screen flex flex-col justify-center items-center bg-[#A62C2C]">
       <div className="w-[52.5rem] flex flex-col">
         <div className="w-full text-center bg-[#D5351D] p-8 rounded-tl-4xl">
           <h1 className="text-5xl font-['Montserrat']">Bem-vindo de volta!</h1>

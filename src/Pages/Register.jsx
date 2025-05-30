@@ -103,7 +103,7 @@ function RegisterPage() {
   };
 
   return(
-    <section className="min-h-screen flex flex-col justify-center items-center bg-[#C83226]">
+    <section className="min-h-screen flex flex-col justify-center items-center bg-[#A62C2C]">
       <div className="w-[53.5rem] flex flex-col">
         <div className="w-full text-center bg-[#D5351D] p-8 rounded-tl-4xl">
           <h1 className="text-5xl font-['Montserrat']">Cadastre-se e Peça Já!</h1>
@@ -111,7 +111,7 @@ function RegisterPage() {
         
         {/* Conecte o formulário ao handleSubmit */}
         <form onSubmit={handleSubmit}>
-          <div className="flex flex-col w-[52.5rem] bg-white h-[45.875rem] items-center gap-6 justify-center rounded-br-4xl ">
+          <div className="flex flex-col w-[53.5rem] bg-white h-[45.875rem] items-center gap-6 justify-center rounded-br-4xl ">
             <div>
               <input
                 required
