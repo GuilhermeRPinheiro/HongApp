@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import {
   Button,
   Navbar,
@@ -11,14 +11,14 @@ import {
   DropdownDivider,
   DropdownHeader,
   DropdownItem,
-} from "flowbite-react";
-import { useAuth } from '../Contexts/AuthContext'; // Ajuste este caminho
+} from "flowbite-react"
+import { useAuth } from '../Contexts/AuthContext.jsx'
 
 export function MyNavbar() {
-  const { isAuthenticated, user, logout, isAdmin } = useAuth();
+  const { isAuthenticated, user, logout, isAdmin } = useAuth()
 
-  // Função simples para estilizar links desativados
-  const disabledLinkClass = "cursor-not-allowed text-gray-400 dark:text-gray-600";
+
+  const linkOculto = "display:hidden"
 
   return (
     <Navbar fluid rounded>
@@ -44,14 +44,18 @@ export function MyNavbar() {
               <span className="block text-sm">{user?.name || 'Usuário'}</span>
               <span className="block truncate text-sm font-medium">{user?.email}</span>
             </DropdownHeader>
-            {/* Links do Dropdown desativados */}
-            <DropdownItem className={disabledLinkClass}>Dashboard</DropdownItem>
+            <DropdownItem as={Link} to="/profile">Perfil</DropdownItem>
             {isAdmin() && (
-              <DropdownItem className={disabledLinkClass}>Admin Settings</DropdownItem>
+              <>
+              <DropdownItem as ={Link} to ="/admin">Admin Config</DropdownItem>
+              <DropdownItem as ={Link} to="/relatorios">Relatórios Admin</DropdownItem>
+              </>
             )}
-            <DropdownItem className={disabledLinkClass}>Settings</DropdownItem>
+             {!isAdmin() && (
+              <DropdownItem as={Link} to="/carrinho">Carrinho</DropdownItem>
+            )}
             <DropdownDivider />
-            <DropdownItem onClick={logout}>Sign out</DropdownItem> {/* Este ainda funciona para sair */}
+            <DropdownItem onClick={logout}>Sign out</DropdownItem> 
           </Dropdown>
         ) : (
           <Button as={Link} to="/login">
@@ -62,13 +66,12 @@ export function MyNavbar() {
       </div>
 
       <NavbarCollapse>
-        {/* Links da Navbar desativados */}
-        <NavbarLink className={disabledLinkClass}>Home</NavbarLink>
-        <NavbarLink className={disabledLinkClass}>About</NavbarLink>
-        <NavbarLink className={disabledLinkClass}>Services</NavbarLink>
-        <NavbarLink className={disabledLinkClass}>Pricing</NavbarLink>
-        <NavbarLink className={disabledLinkClass}>Contact</NavbarLink>
+        <NavbarLink>Home</NavbarLink>
+        <NavbarLink>About</NavbarLink>
+        <NavbarLink>Services</NavbarLink>
+        <NavbarLink>Pricing</NavbarLink>
+        <NavbarLink className={linkOculto}>Contact</NavbarLink>
       </NavbarCollapse>
     </Navbar>
-  );
+  )
 }
