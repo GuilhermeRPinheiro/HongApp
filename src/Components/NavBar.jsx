@@ -1,3 +1,4 @@
+import Logo from '../assets/Logo.svg'
 import { Link } from 'react-router-dom'
 import {
   Button,
@@ -18,18 +19,17 @@ export function MyNavbar() {
   const { isAuthenticated, user, logout, isAdmin } = useAuth()
 
 
-  const linkOculto = "display:hidden"
+  // const linkOculto = "display:hidden"
 
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid rounded  className="!bg-transparent" style={{display:"flex"}}> 
       <NavbarBrand as={Link} href="/">
-        <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
+       <img src={Logo} className='mr-80'/>
       </NavbarBrand>
-
-      <div className="flex md:order-2">
+ 
+      <div className="flex md:order-2 ">
         {isAuthenticated ? (
-          <Dropdown
+          <Dropdown className='!bg-white'
             arrowIcon={false}
             inline
             label={
@@ -41,36 +41,33 @@ export function MyNavbar() {
             }
           >
             <DropdownHeader>
-              <span className="block text-sm">{user?.name || 'Usuário'}</span>
-              <span className="block truncate text-sm font-medium">{user?.email}</span>
+              <span className="text-black font-['Sawarabi_Gothic'] block text-sm">{user?.name || 'Usuário'}</span>
+              <span className="text-black font-['Sawarabi_Gothic']  block truncate text-sm font-medium">{user?.email}</span>
             </DropdownHeader>
-            <DropdownItem as={Link} to="/profile">Perfil</DropdownItem>
+            <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']"  as={Link} to="/profile">Perfil</DropdownItem>
             {isAdmin() && (
               <>
-              <DropdownItem as ={Link} to ="/admin">Admin Config</DropdownItem>
-              <DropdownItem as ={Link} to="/relatorios">Relatórios Admin</DropdownItem>
+              <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']" as ={Link} to ="/admin">Admin Config</DropdownItem>
+              <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']"  as ={Link} to="/relatorios">Relatórios Admin</DropdownItem>
               </>
             )}
              {!isAdmin() && (
-              <DropdownItem as={Link} to="/carrinho">Carrinho</DropdownItem>
+              <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']" as={Link} to="/carrinho">Carrinho</DropdownItem>
             )}
             <DropdownDivider />
-            <DropdownItem onClick={logout}>Sign out</DropdownItem> 
+            <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']" onClick={logout}>Sign out</DropdownItem> 
           </Dropdown>
         ) : (
-          <Button as={Link} to="/login">
-            Entrar
+          <Button as={Link} to="/login" className="ml-24 bg-[#D5351D] w-[12.375rem] h-[3.75rem] rounded-4xl font-['Sawarabi_Gothic'] text-2xl focus:ring-0">
+            Fazer Login
           </Button>
         )}
         <NavbarToggle />
       </div>
 
       <NavbarCollapse>
-        <NavbarLink>Home</NavbarLink>
-        <NavbarLink>About</NavbarLink>
-        <NavbarLink>Services</NavbarLink>
-        <NavbarLink>Pricing</NavbarLink>
-        <NavbarLink className={linkOculto}>Contact</NavbarLink>
+        <NavbarLink to={"/"} className="cursor-pointer font-['Sawarabi_Gothic'] text-2xl mr-10 !text-white">Home</NavbarLink>
+        <NavbarLink to={"/cardapio"} className="cursor-pointer font-['Sawarabi_Gothic'] text-2xl mr-72 !text-white" >Cardápio</NavbarLink>
       </NavbarCollapse>
     </Navbar>
   )
