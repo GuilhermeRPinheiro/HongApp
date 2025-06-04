@@ -95,6 +95,13 @@
       "imageURL": "/images/Shimeji_Manteiga.svg",
       "category": "Entradas",
       "status": "diponível"
+    },
+    {
+      "id": "b0ec",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
     }
   ]
 }
