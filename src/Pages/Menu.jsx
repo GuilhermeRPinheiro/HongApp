@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import guioza from '../assets/Guioza_Porco.svg'
 import rolinho from '../assets/Rolinho_Primavera.svg'
 import shimeji from '../assets/Shimeji_Manteiga.svg'
@@ -220,8 +221,16 @@ vegetal.</p>
         </section>
 
 
+=======
+function Menu() {
+    return (
+        <>
+        
+>>>>>>> 02754e380422a6ba3e030bb40cb7bf75249522f6
         </>
     )
 }
 
-export default Menu
+
+
+export default Menu 

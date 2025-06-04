@@ -4,5 +4,11 @@
 @plugin "daisyui";
 
 :root{
-    background-color: #A62C2C;
+    background-color:  #A62C2C;
+    color:white !important;
+}
+
+.drop-fundo:hover{
+    background-color: #D5351D;
+    color:white !important;
 }

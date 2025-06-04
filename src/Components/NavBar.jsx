@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import Logo from '../assets/Logo.svg'
+import { Link } from 'react-router-dom'
 import {
   Button,
   Navbar,
@@ -11,24 +12,28 @@ import {
   DropdownDivider,
   DropdownHeader,
   DropdownItem,
-} from "flowbite-react";
-import { useAuth } from '../Contexts/AuthContext'; // Ajuste este caminho
+} from "flowbite-react"
+import { useAuth } from '../Contexts/AuthContext.jsx'
 
 export function MyNavbar() {
-  const { isAuthenticated, user, logout, isAdmin } = useAuth();
+  const { isAuthenticated, user, logout, isAdmin } = useAuth()
 
-  // Função simples para estilizar links desativados
-  const disabledLinkClass = "cursor-not-allowed text-gray-400 dark:text-gray-600";
+
+  // const linkOculto = "display:hidden"
 
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid rounded  className="!bg-transparent" style={{display:"flex"}}> 
       <NavbarBrand as={Link} href="/">
+<<<<<<< HEAD
         <img src="honglong_logo.svg" className="mr-3 h-6 sm:h-9" alt="" />
+=======
+       <img src={Logo} className='mr-80'/>
+>>>>>>> 02754e380422a6ba3e030bb40cb7bf75249522f6
       </NavbarBrand>
-
-      <div className="flex md:order-2">
+ 
+      <div className="flex md:order-2 ">
         {isAuthenticated ? (
-          <Dropdown
+          <Dropdown className='!bg-white'
             arrowIcon={false}
             inline
             label={
@@ -40,34 +45,34 @@ export function MyNavbar() {
             }
           >
             <DropdownHeader>
-              <span className="block text-sm">{user?.name || 'Usuário'}</span>
-              <span className="block truncate text-sm font-medium">{user?.email}</span>
+              <span className="text-black font-['Sawarabi_Gothic'] block text-sm">{user?.name || 'Usuário'}</span>
+              <span className="text-black font-['Sawarabi_Gothic']  block truncate text-sm font-medium">{user?.email}</span>
             </DropdownHeader>
-            {/* Links do Dropdown desativados */}
-            <DropdownItem className={disabledLinkClass}>Dashboard</DropdownItem>
+            <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']"  as={Link} to="/profile">Perfil</DropdownItem>
             {isAdmin() && (
-              <DropdownItem className={disabledLinkClass}>Admin Settings</DropdownItem>
+              <>
+              <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']" as ={Link} to ="/admin">Admin Config</DropdownItem>
+              <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']"  as ={Link} to="/relatorios">Relatórios Admin</DropdownItem>
+              </>
             )}
-            <DropdownItem className={disabledLinkClass}>Settings</DropdownItem>
+             {!isAdmin() && (
+              <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']" as={Link} to="/carrinho">Carrinho</DropdownItem>
+            )}
             <DropdownDivider />
-            <DropdownItem onClick={logout}>Sign out</DropdownItem> {/* Este ainda funciona para sair */}
+            <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']" onClick={logout}>Sign out</DropdownItem> 
           </Dropdown>
         ) : (
-          <Button as={Link} to="/login">
-            Entrar
+          <Button as={Link} to="/login" className="ml-24 bg-[#D5351D] w-[12.375rem] h-[3.75rem] rounded-4xl font-['Sawarabi_Gothic'] text-2xl focus:ring-0">
+            Fazer Login
           </Button>
         )}
         <NavbarToggle />
       </div>
 
       <NavbarCollapse>
-        {/* Links da Navbar desativados */}
-        <NavbarLink className={disabledLinkClass}>Home</NavbarLink>
-        <NavbarLink className={disabledLinkClass}>About</NavbarLink>
-        <NavbarLink className={disabledLinkClass}>Services</NavbarLink>
-        <NavbarLink className={disabledLinkClass}>Pricing</NavbarLink>
-        <NavbarLink className={disabledLinkClass}>Contact</NavbarLink>
+        <NavbarLink to={"/"} className="cursor-pointer font-['Sawarabi_Gothic'] text-2xl mr-10 !text-white">Home</NavbarLink>
+        <NavbarLink to={"/cardapio"} className="cursor-pointer font-['Sawarabi_Gothic'] text-2xl mr-72 !text-white" >Cardápio</NavbarLink>
       </NavbarCollapse>
     </Navbar>
-  );
+  )
 }
