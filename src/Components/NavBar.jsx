@@ -24,11 +24,7 @@ export function MyNavbar() {
   return (
     <Navbar fluid rounded  className="!bg-transparent" style={{display:"flex"}}> 
       <NavbarBrand as={Link} href="/">
-<<<<<<< HEAD
-        <img src="honglong_logo.svg" className="mr-3 h-6 sm:h-9" alt="" />
-=======
        <img src={Logo} className='mr-80'/>
->>>>>>> 02754e380422a6ba3e030bb40cb7bf75249522f6
       </NavbarBrand>
  
       <div className="flex md:order-2 ">

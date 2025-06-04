@@ -214,6 +214,27 @@
       "preco": 24.9,
       "imagem": "/src/assets/Guioza_Porco.svg",
       "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "0853",
+      "nome": "Yakissoba de Camarão",
+      "preco": 39.9,
+      "imagem": "/src/assets/Yaki_Camarao.svg",
+      "descricao": "Camarões salteados com legumes frescos e molho oriental."
+    },
+    {
+      "id": "bafc",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "7ae3",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
     }
   ]
 }

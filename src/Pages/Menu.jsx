@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import guioza from '../assets/Guioza_Porco.svg'
 import rolinho from '../assets/Rolinho_Primavera.svg'
 import shimeji from '../assets/Shimeji_Manteiga.svg'
@@ -10,7 +9,7 @@ import Swal from 'sweetalert2'
 
 function Menu(){
 
-            async function addCarrinho(data) {
+        async function addCarrinho(data) {
         const { nome, preco, imagem, descricao = "" } = data;
 
         try {
@@ -61,7 +60,7 @@ function Menu(){
                     </div>
                     <div className="pt-[1.5rem] pl-2.5 flex justify-around">
                         <p className="text-black text-base font-bold font-['Montserrat'] pt-3">Preço: R$ 24,90</p>
-                        <button
+                        <button 
                             onClick={() =>
                                 addCarrinho({
                                 nome: "Guioza de Porco (7 unid)",
@@ -70,9 +69,9 @@ function Menu(){
                                 descricao: "Pastéis japoneses recheados, crocantes e suculentos por dentro."
                                 })
                             }
-                            className="w-32 h-12 bg-red-600 rounded-[20px]"
+                            className="cursor-pointer w-32 h-12 bg-red-600 rounded-[20px]"
                             >
-                            <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                            <span className="text-white text-base font-semibold font-['Montserrat']">Pedir Agora</span>
                             </button>
                     </div>
                 </div>
@@ -96,9 +95,9 @@ function Menu(){
                                     descricao: "Clássico recheado com legumes, servido com molho agridoce."
                                     })
                                 }
-                                className="w-32 h-12 bg-red-600 rounded-[20px]"
+                                className="cursor-pointer w-32 h-12 bg-red-600 rounded-[20px]"
                                 >
-                            <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                            <span className="text-white text-base font-semibold font-['Montserrat']">Pedir Agora</span>
                             </button>
                     </div>
                 </div>
@@ -122,9 +121,9 @@ function Menu(){
                                 descricao: "Cogumelos salteados com manteiga e cebolinha."
                                 })
                             }
-                            className="w-32 h-12 bg-red-600 rounded-[20px]"
+                            className=" cursor-pointer w-32 h-12 bg-red-600 rounded-[20px]"
                             >
-                            <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                            <span className="text-white text-base font-semibold font-['Montserrat']">Pedir Agora</span>
                             </button>
             
                     </div>
@@ -157,9 +156,9 @@ function Menu(){
                                 descricao: "Camarões salteados com legumes frescos e molho oriental."
                                 })
                             }
-                            className="w-32 h-12 bg-red-600 rounded-[20px]"
+                            className="cursor-pointer w-32 h-12 bg-red-600 rounded-[20px]"
                             >
-                            <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                            <span className="text-white text-base font-semibold font-['Montserrat']">Pedir Agora</span>
                             </button>
                     </div>
                 </div>
@@ -184,9 +183,9 @@ vegetal.</p>
                                 descricao: "Legumes temperados com molho 100% vegetal."
                                 })
                             }
-                            className="w-32 h-12 bg-red-600 rounded-[20px]"
+                            className="cursor-pointer w-32 h-12 bg-red-600 rounded-[20px]"
                             >
-                            <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                            <span className="text-white text-base font-semibold font-['Montserrat']">Pedir Agora</span>
                             </button>
                     </div>
                 </div>
@@ -209,28 +208,16 @@ vegetal.</p>
                             imagem: Yaki_Porco,
                             descricao: "Barriga de porco caramelizada com molho picante."
                             })
-                        }
-                        className="w-32 h-12 bg-red-600 rounded-[20px]"
+                        } 
+                        className="cursor-pointer w-32 h-12 bg-red-600 rounded-[20px]"
                         >
-                        <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                        <span className="text-white text-base font-semibold font-['Montserrat']">Pedir Agora</span>
                         </button>
                     </div>
                 </div>
             </div>
 
         </section>
-
-
-=======
-function Menu() {
-    return (
-        <>
-        
->>>>>>> 02754e380422a6ba3e030bb40cb7bf75249522f6
-        </>
-    )
+</>)
 }
-
-
-
-export default Menu 
+export default Menu
