@@ -5,6 +5,7 @@ import Yaki_Camarao from '../assets/Yaki_Camarao.svg'
 import Yaki_Porco from '../assets/Yaki_Porco.svg'
 import Yaki_Vegetariano from '../assets/Yaki_Vegetariano.svg'
 import Swal from 'sweetalert2'
+import Footer from '../Components/Footer'
 
 
 function Menu(){
@@ -218,6 +219,10 @@ vegetal.</p>
             </div>
 
         </section>
-</>)
-}
+
+        <Footer/>
+
+        </>
+        )
+        }
 export default Menu
