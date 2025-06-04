@@ -4,9 +4,40 @@ import shimeji from '../assets/Shimeji_Manteiga.svg'
 import Yaki_Camarao from '../assets/Yaki_Camarao.svg'
 import Yaki_Porco from '../assets/Yaki_Porco.svg'
 import Yaki_Vegetariano from '../assets/Yaki_Vegetariano.svg'
+import Swal from 'sweetalert2'
 
 
 function Menu(){
+
+            async function addCarrinho(data) {
+        const { nome, preco, imagem, descricao = "" } = data;
+
+        try {
+            const resposta = await fetch(`http://localhost:3001/pratos`, {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({ nome, preco, imagem, descricao })
+            });
+
+            if (!resposta.ok) {
+            await Swal.fire({
+                icon: "error",
+                title: "Erro ao adicionar prato no carrinho!",
+                text: "Tente novamente mais tarde ou escolha outro prato"
+            });
+            } else {
+            await Swal.fire({
+                title: "Boa!",
+                text: "Prato adicionado com sucesso",
+                icon: "success",
+                confirmButtonText: "Ok"
+            });
+            }
+        } catch (erro) {
+            console.log(`Erro: ${erro.message}`);
+        }
+        }
+
     return(
         <>
         <div className="flex flex-col">
@@ -29,7 +60,19 @@ function Menu(){
                     </div>
                     <div className="pt-[1.5rem] pl-2.5 flex justify-around">
                         <p className="text-black text-base font-bold font-['Montserrat'] pt-3">Preço: R$ 24,90</p>
-                        <button className="w-32 h-12 bg-red-600 rounded-[20px]"><a href="" className="w-24 h-4 justify-start text-white text-base font-semibold font-['Inter']">Pedir Agora</a></button>
+                        <button
+                            onClick={() =>
+                                addCarrinho({
+                                nome: "Guioza de Porco (7 unid)",
+                                preco: 24.90,
+                                imagem: guioza,
+                                descricao: "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+                                })
+                            }
+                            className="w-32 h-12 bg-red-600 rounded-[20px]"
+                            >
+                            <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                            </button>
                     </div>
                 </div>
 
@@ -43,7 +86,19 @@ function Menu(){
                     </div>
                     <div className="pt-[1.5rem] pl-2.5 flex justify-around">
                         <p className="text-black text-base font-bold font-['Montserrat'] pt-3">Preço: R$ 19,90</p>
-                        <button className="w-32 h-12 bg-red-600 rounded-[20px]"><a href="" className="w-24 h-4 justify-start text-white text-base font-semibold font-['Inter']">Pedir Agora</a></button>
+                         <button
+                                onClick={() =>
+                                    addCarrinho({
+                                    nome: "Rolinho Primavera (5 unid)",
+                                    preco: 19.90,
+                                    imagem: rolinho,
+                                    descricao: "Clássico recheado com legumes, servido com molho agridoce."
+                                    })
+                                }
+                                className="w-32 h-12 bg-red-600 rounded-[20px]"
+                                >
+                            <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                            </button>
                     </div>
                 </div>
 
@@ -57,7 +112,20 @@ function Menu(){
                     </div>
                     <div className="pt-[1.5rem] pl-2.5 flex justify-around">
                         <p className="text-black text-base font-bold font-['Montserrat'] pt-3">Preço: R$ 27,90</p>
-                        <button className="w-32 h-12 bg-red-600 rounded-[20px]"><a href="" className="w-24 h-4 justify-start text-white text-base font-semibold font-['Inter']">Pedir Agora</a></button>
+                        <button
+                            onClick={() =>
+                                addCarrinho({
+                                nome: "Shimeji na Manteiga",
+                                preco: 27.90,
+                                imagem: shimeji,
+                                descricao: "Cogumelos salteados com manteiga e cebolinha."
+                                })
+                            }
+                            className="w-32 h-12 bg-red-600 rounded-[20px]"
+                            >
+                            <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                            </button>
+            
                     </div>
                 </div>
             </div>
@@ -79,7 +147,19 @@ function Menu(){
                     </div>
                     <div className="pt-[1.5rem] pl-2.5 flex justify-around">
                         <p className="text-black text-base font-bold font-['Montserrat'] pt-3">Preço: R$ 39,90</p>
-                        <button className="w-32 h-12 bg-red-600 rounded-[20px]"><a href="" className="w-24 h-4 justify-start text-white text-base font-semibold font-['Inter']">Pedir Agora</a></button>
+                         <button
+                            onClick={() =>
+                                addCarrinho({
+                                nome: "Yakissoba de Camarão",
+                                preco: 39.90,
+                                imagem: Yaki_Camarao,
+                                descricao: "Camarões salteados com legumes frescos e molho oriental."
+                                })
+                            }
+                            className="w-32 h-12 bg-red-600 rounded-[20px]"
+                            >
+                            <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                            </button>
                     </div>
                 </div>
 
@@ -94,7 +174,19 @@ vegetal.</p>
                     </div>
                     <div className="pt-[1.5rem] pl-2.5 flex justify-around">
                         <p className="text-black text-base font-bold font-['Montserrat'] pt-3">Preço: R$ 32,90</p>
-                        <button className="w-32 h-12 bg-red-600 rounded-[20px]"><a href="" className="w-24 h-4 justify-start text-white text-base font-semibold font-['Inter']">Pedir Agora</a></button>
+                            <button
+                            onClick={() =>
+                                addCarrinho({
+                                nome: "Yakissoba Vegetariano",
+                                preco: 32.90,
+                                imagem: Yaki_Vegetariano,
+                                descricao: "Legumes temperados com molho 100% vegetal."
+                                })
+                            }
+                            className="w-32 h-12 bg-red-600 rounded-[20px]"
+                            >
+                            <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                            </button>
                     </div>
                 </div>
 
@@ -108,7 +200,19 @@ vegetal.</p>
                     </div>
                     <div className="pt-[1.5rem] pl-2.5 flex justify-around">
                         <p className="text-black text-base font-bold font-['Montserrat'] pt-3">Preço: R$ 42,90</p>
-                        <button className="w-32 h-12 bg-red-600 rounded-[20px]"><a href="" className="w-24 h-4 justify-start text-white text-base font-semibold font-['Inter']">Pedir Agora</a></button>
+                        <button
+                        onClick={() =>
+                            addCarrinho({
+                            nome: "Yakissoba de Porco",
+                            preco: 42.90,
+                            imagem: Yaki_Porco,
+                            descricao: "Barriga de porco caramelizada com molho picante."
+                            })
+                        }
+                        className="w-32 h-12 bg-red-600 rounded-[20px]"
+                        >
+                        <span className="text-white text-base font-semibold font-['Inter']">Pedir Agora</span>
+                        </button>
                     </div>
                 </div>
             </div>

@@ -95,6 +95,125 @@
       "imageURL": "/images/Shimeji_Manteiga.svg",
       "category": "Entradas",
       "status": "diponível"
+    },
+    {
+      "id": "ca7b",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "5b00",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "4825",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "df85",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "54b4",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "3edc",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "a349",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "db35",
+      "nome": "Yakissoba de Camarão",
+      "preco": 39.9,
+      "imagem": "/src/assets/Yaki_Camarao.svg",
+      "descricao": "Camarões salteados com legumes frescos e molho oriental."
+    },
+    {
+      "id": "56d1",
+      "nome": "Shimeji na Manteiga",
+      "preco": 27.9,
+      "imagem": "/src/assets/Shimeji_Manteiga.svg",
+      "descricao": "Cogumelos salteados com manteiga e cebolinha."
+    },
+    {
+      "id": "b3f2",
+      "nome": "Shimeji na Manteiga",
+      "preco": 27.9,
+      "imagem": "/src/assets/Shimeji_Manteiga.svg",
+      "descricao": "Cogumelos salteados com manteiga e cebolinha."
+    },
+    {
+      "id": "c890",
+      "nome": "Rolinho Primavera (5 unid)",
+      "preco": 19.9,
+      "imagem": "/src/assets/Rolinho_Primavera.svg",
+      "descricao": "Clássico recheado com legumes, servido com molho agridoce."
+    },
+    {
+      "id": "e3de",
+      "nome": "Yakissoba de Camarão",
+      "preco": 39.9,
+      "imagem": "/src/assets/Yaki_Camarao.svg",
+      "descricao": "Camarões salteados com legumes frescos e molho oriental."
+    },
+    {
+      "id": "91d5",
+      "nome": "Yakissoba Vegetariano",
+      "preco": 32.9,
+      "imagem": "/src/assets/Yaki_Vegetariano.svg",
+      "descricao": "Legumes temperados com molho 100% vegetal."
+    },
+    {
+      "id": "e873",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "bea7",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "8291",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+    },
+    {
+      "id": "a83c",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
     }
   ]
 }
