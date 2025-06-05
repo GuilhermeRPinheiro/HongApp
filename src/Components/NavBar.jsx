@@ -66,8 +66,17 @@ export function MyNavbar() {
       </div>
 
       <NavbarCollapse>
-        <NavbarLink to={"/"} className="cursor-pointer font-['Sawarabi_Gothic'] text-2xl mr-10 !text-white">Home</NavbarLink>
-        <NavbarLink to={"/cardapio"} className="cursor-pointer font-['Sawarabi_Gothic'] text-2xl mr-72 !text-white" >Cardápio</NavbarLink>
+        <Link
+          to="/"
+          className="cursor-pointer font-['Sawarabi_Gothic'] text-2xl mr-10 !text-white">
+          Home
+        </Link>
+        
+        <Link
+          to="/cardapio"
+          className="cursor-pointer font-['Sawarabi_Gothic'] text-2xl mr-72 !text-white">
+          Cardápio
+        </Link>
       </NavbarCollapse>
     </Navbar>
   )
