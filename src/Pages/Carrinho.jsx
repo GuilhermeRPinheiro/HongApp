@@ -27,12 +27,12 @@ function Carrinho() {
           </div>
 
           {cartItems.map((item) => (
-            <div key={item.id} className="flex justify-between items-center bg-[#D31D1D] p-4 border-b border-gray-700">
+            <div key={item.id} className="flex justify-between items-center bg-[#D31D1D] p-4 border-b">
               <div className="flex items-center flex-1 pr-2">
                 <img src={item.imageURL} alt={item.name} className="w-16 h-16 rounded-lg mr-4 object-cover" />
                 <div>
                   <h4 className="text-xl font-semibold">{item.name}</h4>
-                  <p className="text-sm text-gray-400 line-clamp-1">{item.description}</p>
+                  <p className="text-sm text-white line-clamp-1">{item.description}</p>
                 </div>
               </div>
               <span className="w-24 text-center text-lg">R$ {item.price.toFixed(2)}</span>
@@ -82,7 +82,7 @@ function Carrinho() {
           </div>
 
           <div className="mt-8 text-center">
-            <Link to="/cardapio" className="text-red-500 hover:underline text-lg">
+            <Link to="/cardapio" className="text-white hover:underline text-lg">
               Continuar Comprando
             </Link>
           </div>
