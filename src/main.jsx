@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { AuthProvider } from './Contexts/AuthContext'
-import { CartProvider } from './Contexts/CartContext'
+import { CartProvider } from './contexts/CartContext'
 import { BrowserRouter } from 'react-router-dom'
 import 'flowbite-react'
 

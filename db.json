@@ -41,67 +41,54 @@
       "role": "user"
     }
   ],
-  "pratos": [
+   "pratos": [
     {
-      "id": "prod_1",
-      "name": "Yakissoba de Camarão",
-      "description": "Camarões salteados com legumes frescos e molho oriental.",
-      "price": "39.90",
-      "imageURL": "/images/Yaki_Camarao.svg",
-      "category": "Yakissoba",
-      "status": "diponível"
-    },
-    {
-      "id": "prod_2",
-      "name": "Yakissoba de Vegetariano",
-      "description": "Legumes temperados com molho 100% vegetal.",
-      "price": "32.90",
-      "imageURL": "/images/Yaki_Vegetariano.svg",
-      "category": "Yakissoba",
-      "status": "diponível"
-    },
-    {
-      "id": "prod_3",
-      "name": "Yakissoba de Porco",
-      "description": "Barriga de porco caramelizada com molho picante.",
-      "price": "42.90",
-      "imageURL": "/images/Yaki_Porco.svg",
-      "category": "Yakissoba",
-      "status": "diponível"
-    },
-    {
-      "id": "prod_4",
-      "name": "Guioza de Porco (7unid)",
-      "description": "Pastéis japoneses recheados, crocantes e suculentos por dentro.",
-      "price": "24.90",
-      "imageURL": "/images/Guioza_Porco.svg",
-      "category": "Entradas",
-      "status": "diponível"
-    },
-    {
-      "id": "prod_5",
-      "name": "Rolinho Primaver (5unid)",
-      "description": "Clássico recheado com legumes, servido com molho agridoce.",
-      "price": "19.90",
-      "imageURL": "/images/Rolinho_Primavera.svg",
-      "category": "Entradas",
-      "status": "diponível"
-    },
-    {
-      "id": "prod_6",
-      "name": "Shimeji na Manteiga",
-      "description": "Cogumelos salteados com manteiga e cebolinha.",
-      "price": "27.90",
-      "imageURL": "/images/Shimeji_Manteiga.svg",
-      "category": "Entradas",
-      "status": "diponível"
-    },
-    {
-      "id": "b0ec",
+      "id": "18ed",
       "nome": "Guioza de Porco (7 unid)",
       "preco": 24.9,
       "imagem": "/src/assets/Guioza_Porco.svg",
-      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro."
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro.",
+      "category": "Entradas"
+    },
+    {
+      "id": "1986",
+      "nome": "Rolinho Primavera (5un)",
+      "preco": 24.9,
+      "imagem": "/src/assets/Rolinho_Primavera.svg",
+      "descricao": "Clássico recheado com legumes, servido com molho agridoce.",
+      "category": "Entradas" 
+    },
+    {
+      "id": "9144",
+      "nome": "Shimeji na Manteiga",
+      "preco": 39.9,
+      "imagem": "/src/assets/Shimeji_Manteiga.svg",
+      "descricao": "Cogumelos salteados com manteiga e cebolinha.",
+      "category": "Entradas" 
+    },
+    {
+      "id": "6ebb",
+      "nome": "Yakissoba de Camarão",
+      "preco": 39.9,
+      "imagem": "/src/assets/Yaki_Camarao.svg",
+      "descricao": "Camarões salteados com legumes frescos e molho oriental.",
+      "category": "Yakissoba" 
+    },
+    {
+      "id": "ae31",
+      "nome": "Yakissoba de Porco",
+      "preco": 39.9,
+      "imagem": "/src/assets/Yaki_Porco.svg",
+      "descricao": "Barriga de porco caramelizada com molho picante.",
+      "category": "Yakissoba" 
+    },
+    {
+      "id": "ae31",
+      "nome": "Yakissoba Vegetariano",
+      "preco": 39.9,
+      "imagem": "/src/assets/Yaki_Vegetariano.svg",
+      "descricao": "Legumes temperados com molho 100% vegetal.",
+      "category": "Yakissoba" 
     }
   ]
 }

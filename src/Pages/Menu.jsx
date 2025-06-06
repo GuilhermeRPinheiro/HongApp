@@ -1,14 +1,77 @@
-import guioza from '../assets/Guioza_Porco.svg';
-import rolinho from '../assets/Rolinho_Primavera.svg';
-import shimeji from '../assets/Shimeji_Manteiga.svg';
-import Yaki_Camarao from '../assets/Yaki_Camarao.svg';
-import Yaki_Porco from '../assets/Yaki_Porco.svg';
-import Yaki_Vegetariano from '../assets/Yaki_Vegetariano.svg';
-
-import CardPrato from '../components/CardPrato';
+// src/pages/Menu.jsx
+import React, { useState, useEffect } from 'react';
+import CardPrato from '../Components/CardPrato';
 import Footer from '../Components/Footer';
 
 function Menu() {
+  const [pratos, setPratos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchPratos() {
+      console.log("MENU DEBUG: 1. Iniciando fetchPratos..."); // DEBUG 1
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch('http://localhost:3000/pratos'); 
+        console.log("MENU DEBUG: 2. Resposta do fetch:", response); // DEBUG 2
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Erro HTTP ao carregar pratos: ${response.status} ${response.statusText}. Detalhes: ${errorText}`);
+        }
+
+        const data = await response.json();
+        console.log("MENU DEBUG: 3. Dados JSON recebidos da API:", data); // DEBUG 3
+
+        // Mapeia para garantir que o 'preco' seja um número e que 'category' exista
+        const pratosAjustados = data.map(p => ({
+            ...p,
+            preco: parseFloat(p.preco) || 0, // Garante que 'preco' é numérico
+            category: p.category || 'Geral' // Garante que 'category' existe para o filtro
+        }));
+        setPratos(pratosAjustados);
+        console.log("MENU DEBUG: 4. Pratos ajustados e definidos no estado:", pratosAjustados); // DEBUG 4
+
+      } catch (err) {
+        console.error("MENU DEBUG: 5. ERRO CAPTURADO EM fetchPratos:", err); // DEBUG 5
+        setError("Não foi possível carregar o cardápio. Verifique a conexão com o servidor.");
+      } finally {
+        setLoading(false);
+        console.log("MENU DEBUG: 6. fetchPratos finalizado. Loading:", false); // DEBUG 6
+      }
+    }
+    fetchPratos();
+  }, []); // O array vazio garante que roda apenas uma vez
+
+  // Filtra os pratos com base na categoria
+  const entradas = pratos.filter(prato => prato.category === 'Entradas');
+  const yakissobas = pratos.filter(prato => prato.category === 'Yakissoba');
+  console.log("MENU DEBUG: 7. Entradas para mapear:", entradas); // DEBUG 7
+  console.log("MENU DEBUG: 8. Yakissobas para mapear:", yakissobas); // DEBUG 8
+
+  if (loading) {
+    console.log("MENU DEBUG: 9. Exibindo estado de Carregamento."); // DEBUG 9
+    return (
+      <div className="flex justify-center items-center h-screen text-white text-2xl">
+        Carregando cardápio...
+      </div>
+    );
+  }
+
+  if (error) {
+    console.log("MENU DEBUG: 10. Exibindo estado de Erro:", error); // DEBUG 10
+    return (
+      <div className="flex justify-center items-center h-screen text-red-500 text-2xl">
+        {error}
+      </div>
+    );
+  }
+  
+  console.log("MENU DEBUG: 11. Renderizando Cardápio (dados carregados)."); // DEBUG 11
+
   return (
     <>
       <div className="flex flex-col">
@@ -21,59 +84,39 @@ function Menu() {
         </p>
       </div>
 
-      
       <section>
         <h3 className="flex justify-center text-white text-3xl font-bold font-['Montserrat'] uppercase pt-20">
           entradas
         </h3>
-
         <div className="flex justify-center gap-14 pt-10 flex-wrap">
-          <CardPrato
-            nome="Guioza de Porco (7 unid)"
-            preco={24.9}
-            imagem={guioza}
-            descricao="Pastéis japoneses recheados, crocantes e suculentos por dentro."
-          />
-          <CardPrato
-            nome="Rolinho Primavera (5 unid)"
-            preco={19.9}
-            imagem={rolinho}
-            descricao="Clássico recheado com legumes, servido com molho agridoce."
-          />
-          <CardPrato
-            nome="Shimeji na Manteiga"
-            preco={27.9}
-            imagem={shimeji}
-            descricao="Delicioso cogumelo shimeji salteado na manteiga com um toque de shoyu."
-          />
+          {entradas.length === 0 && !loading && !error ? ( // Mensagem se não houver entradas e não estiver carregando/erro
+            <p className="text-xl text-gray-400">Nenhuma entrada encontrada.</p>
+          ) : (
+            entradas.map((prato) => (
+              <CardPrato
+                key={prato.id}
+                prato={prato} // Passa o objeto 'prato' completo, que já foi ajustado
+              />
+            ))
+          )}
         </div>
       </section>
 
-      
       <section>
         <h3 className="flex justify-center text-white text-3xl font-bold font-['Montserrat'] uppercase pt-20">
           yakissobas
         </h3>
-
         <div className="flex justify-center gap-14 pt-10 flex-wrap">
-          <CardPrato
-            nome="Yakissoba de Camarão"
-            preco={39.9}
-            imagem={Yaki_Camarao}
-            descricao="Camarões salteados com legumes frescos e molho oriental."
-          />
-          <CardPrato
-            nome="Yakissoba Vegetariano"
-            preco={32.9}
-            imagem={Yaki_Vegetariano}
-            descricao="Legumes temperados com molho 100% vegetal."
-          />
-          <CardPrato
-            nome="Yakissoba de Porco"
-            preco={42.9}
-            imagem={Yaki_Porco}
-            descricao="Barriga de porco caramelizada com molho picante."
-          />
+          {yakissobas.length === 0 && !loading && !error ? ( // Mensagem se não houver yakissobas
+            <p className="text-xl text-gray-400">Nenhum yakissoba encontrado.</p>
+          ) : (
+            yakissobas.map((prato) => (
+              <CardPrato
+                key={prato.id}
+                prato={prato}
+              />
+            ))
+          )}
         </div>
       </section>
 

@@ -19,12 +19,19 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     setLoading(true); 
     try {
-      const response = await fetch(`http://localhost:3001/users?email=${email}`);
+      // AQUI: A requisição para o login deve apontar para o JSON Server (porta 3000)
+      const response = await fetch(`http://localhost:3000/users?email=${email}`); 
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Erro na rede ou servidor (login): ${response.status} ${response.statusText}. Detalhes: ${errorText}`);
+      }
+
       const users = await response.json(); 
 
       if (users.length > 0) {
         const foundUser = users[0]; 
-        if (foundUser.password === password) {
+        if (foundUser.password === password) { // Validação de senha no frontend
           setUser(foundUser); 
           localStorage.setItem('currentUser', JSON.stringify(foundUser));
           setLoading(false);
@@ -34,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       setLoading(false); 
       return false;
     } catch (error) {
-      console.error("Erro no login:", error);
+      console.error("ERRO COMPLETO NO LOGIN:", error);
       setLoading(false);
       return false;
     }
