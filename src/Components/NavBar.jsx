@@ -23,7 +23,7 @@ export function MyNavbar() {
 
   return (
     <Navbar fluid rounded  className="!bg-transparent" style={{display:"flex"}}> 
-      <NavbarBrand as={Link} href="/">
+      <NavbarBrand as={Link} to="/">
        <img src={Logo} className='mr-80'/>
       </NavbarBrand>
  

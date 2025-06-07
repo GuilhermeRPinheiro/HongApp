@@ -1,12 +1,15 @@
 // src/pages/Menu.jsx
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CardPrato from '../Components/CardPrato';
 import Footer from '../Components/Footer';
+import button from 'daisyui/components/button';
 
 function Menu() {
   const [pratos, setPratos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate
 
   useEffect(() => {
     async function fetchPratos() {
@@ -121,7 +124,12 @@ function Menu() {
       </section>
 
       <Footer />
-    </>
+    
+
+           <button className="fixed bottom-6 right-6 bg-white hover:bg-red-700 text-white rounded-full p-4 shadow-lg transition duration-300 z-50">
+        <a href="/Carrinho">🛒</a>
+      </button>
+</>
   );
 }
 
