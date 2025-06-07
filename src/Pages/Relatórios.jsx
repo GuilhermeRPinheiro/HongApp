@@ -54,13 +54,13 @@ function RelatorioPage() { // Renomeado de AdminRelatorios para RelatorioPage
   return (
     <>
       <div className="pt-10 p-5 flex flex-col items-center min-h-screen bg-transparent text-white">
-        <h2 className="text-5xl font-bold mb-8 font-['Montserrat'] text-center uppercase">Relatórios de Pedidos</h2>
+        <h2 className="text-5xl font-bold mb-8 font-['Montserrat'] text-center uppercase">Relatório de Pedidos</h2>
 
         {/* Botão de Imprimir/Salvar PDF */}
         {pedidos.length > 0 && ( // Mostra o botão apenas se houver pedidos
           <button
             onClick={handlePrint}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-6 print-hidden"
+            className=" cursor-pointer bg-[#f16c1d] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mb-6 print-hidden"
           >
             Imprimir Relatórios / Salvar como PDF
           </button>

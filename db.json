@@ -1,13 +1,13 @@
 {
   "users": [
     {
-      "id": "1",
+      "name": "Marlon Ramos",
       "email": "marlon@teste.com",
       "password": "adminpassword",
-      "name": "MarlonTeste",
       "adress": "Rua 123",
+      "profilePicture": "/images/User5.png",
       "role": "admin",
-      "profilePicture": "/images/User5.png"
+      "id": "1"
     },
     {
       "id": "2",
@@ -140,6 +140,24 @@
         }
       ],
       "date": "2025-06-07T04:30:47.600Z",
+      "status": "confirmado"
+    },
+    {
+      "id": "a3d4",
+      "userId": "3",
+      "userName": "Otavio",
+      "userPhoto": "/images/User3.png",
+      "totalValue": 24.9,
+      "items": [
+        {
+          "id": "19ed",
+          "name": "Guioza de Porco (7 unid)",
+          "price": 24.9,
+          "quantity": 1,
+          "imageURL": "/images/Guioza_Porco.svg"
+        }
+      ],
+      "date": "2025-06-07T04:56:50.836Z",
       "status": "confirmado"
     }
   ]

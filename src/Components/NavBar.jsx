@@ -1,3 +1,4 @@
+// src/Components/Navbar.jsx
 import Logo from '../assets/Logo.svg'
 import { Link } from 'react-router-dom'
 import {
@@ -18,15 +19,12 @@ import { useAuth } from '../Contexts/AuthContext.jsx'
 export function MyNavbar() {
   const { isAuthenticated, user, logout, isAdmin } = useAuth()
 
-
-  // const linkOculto = "display:hidden"
-
   return (
-    <Navbar fluid rounded  className="!bg-transparent" style={{display:"flex"}}> 
+    <Navbar fluid rounded  className="!bg-transparent" style={{display:"flex"}}>
       <NavbarBrand as={Link} to="/">
        <img src={Logo} className='mr-80'/>
       </NavbarBrand>
- 
+
       <div className="flex md:order-2 ">
         {isAuthenticated ? (
           <Dropdown className='!bg-white'
@@ -35,7 +33,8 @@ export function MyNavbar() {
             label={
               <Avatar
                 alt="User settings"
-                img={user?.profilePic || "https://flowbite.com/docs/images/people/profile-picture-5.jpg"}
+                // Mude 'profilePic' para 'profilePicture' para corresponder ao seu db.json
+                img={user?.profilePicture || "https://flowbite.com/docs/images/people/profile-picture-5.jpg"}
                 rounded
               />
             }
@@ -51,11 +50,11 @@ export function MyNavbar() {
               <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']"  as ={Link} to="/relatorios">Relatórios Admin</DropdownItem>
               </>
             )}
-             {!isAdmin() && (
+            {!isAdmin() && (
               <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']" as={Link} to="/carrinho">Carrinho</DropdownItem>
             )}
             <DropdownDivider />
-            <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']" onClick={logout}>Sign out</DropdownItem> 
+            <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']" onClick={logout}>Sign out</DropdownItem>
           </Dropdown>
         ) : (
           <Button as={Link} to="/login" className="ml-24 bg-[#D5351D] w-[12.375rem] h-[3.75rem] rounded-4xl font-['Sawarabi_Gothic'] text-2xl focus:ring-0">
@@ -71,7 +70,7 @@ export function MyNavbar() {
           className="cursor-pointer font-['Sawarabi_Gothic'] text-2xl mr-10 !text-white">
           Home
         </Link>
-        
+
         <Link
           to="/cardapio"
           className="cursor-pointer font-['Sawarabi_Gothic'] text-2xl mr-72 !text-white">

@@ -1,73 +1,109 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+// src/Contexts/AuthContext.jsx
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 export const AuthContext = createContext();
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true); // Adiciona estado de carregamento
+
   useEffect(() => {
-    const storedUser = localStorage.getItem('currentUser');
-    if (storedUser) {
+    const loadUserFromLocalStorage = async () => {
       try {
-        setUser(JSON.parse(storedUser));
-      } catch (e) {
-        console.error("Erro ao parsear usuário do localStorage:", e);
-        localStorage.removeItem('currentUser');
-      }
-    }
-    setLoading(false);
-  }, []);
-  const login = async (email, password) => {
-    setLoading(true); 
-    try {
-      // AQUI: A requisição para o login deve apontar para o JSON Server (porta 3000)
-      const response = await fetch(`http://localhost:3000/users?email=${email}`); 
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Erro na rede ou servidor (login): ${response.status} ${response.statusText}. Detalhes: ${errorText}`);
-      }
-
-      const users = await response.json(); 
-
-      if (users.length > 0) {
-        const foundUser = users[0]; 
-        if (foundUser.password === password) { // Validação de senha no frontend
-          setUser(foundUser); 
-          localStorage.setItem('currentUser', JSON.stringify(foundUser));
-          setLoading(false);
-          return true; 
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+          const parsedUser = JSON.parse(storedUser);
+          setUser(parsedUser);
+          setIsAuthenticated(true);
         }
+      } catch (error) {
+        console.error("Erro ao carregar usuário do localStorage:", error);
+        localStorage.removeItem('user'); // Limpa se estiver corrompido
+      } finally {
+        setLoading(false);
       }
-      setLoading(false); 
-      return false;
+    };
+    loadUserFromLocalStorage();
+  }, []);
+
+  const login = async (email, password) => {
+    try {
+      const response = await fetch('http://localhost:3000/users');
+      if (!response.ok) {
+        throw new Error('Erro ao buscar usuários.');
+      }
+      const users = await response.json();
+      const foundUser = users.find(u => u.email === email && u.password === password);
+
+      if (foundUser) {
+        setUser(foundUser);
+        setIsAuthenticated(true);
+        localStorage.setItem('user', JSON.stringify(foundUser)); // Salva o user completo
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'success',
+          title: `Bem-vindo, ${foundUser.name}!`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+        return true;
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro de Login',
+          text: 'Email ou senha inválidos!'
+        });
+        return false;
+      }
     } catch (error) {
-      console.error("ERRO COMPLETO NO LOGIN:", error);
-      setLoading(false);
+      console.error("Erro no login:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro',
+        text: 'Não foi possível conectar ao servidor de autenticação.'
+      });
       return false;
     }
   };
 
   const logout = () => {
-    setUser(null); 
-    localStorage.removeItem('currentUser'); 
+    setUser(null);
+    setIsAuthenticated(false);
+    localStorage.removeItem('user');
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'info',
+      title: 'Você foi desconectado.',
+      showConfirmButton: false,
+      timer: 1500
+    });
   };
 
-  const isUserAdmin = () => {
+  const isAdmin = () => {
     return user && user.role === 'admin';
   };
 
-  const authContextValue = {
-    user, 
-    isAuthenticated: !!user,
-    loading, 
-    login, 
-    logout, 
-    isAdmin: isUserAdmin, 
+  // NOVA FUNÇÃO: Para atualizar o estado do usuário no contexto
+  const updateUser = (updatedUserData) => {
+    setUser(prevUser => {
+      const newUserState = { ...prevUser, ...updatedUserData };
+      localStorage.setItem('user', JSON.stringify(newUserState)); // Atualiza no localStorage também
+      return newUserState;
+    });
   };
 
+  // Garante que o loading seja falso para evitar que PrivateRoute/AdminRoute bloqueiem antes do carregamento
+  if (loading) {
+    return <div></div>; // Ou um spinner de carregamento global
+  }
+
   return (
-    <AuthContext.Provider value={authContextValue}>
-      {!loading && children}
+    <AuthContext.Provider value={{ user, isAuthenticated, login, logout, isAdmin, updateUser }}>
+      {children}
     </AuthContext.Provider>
   );
 };
