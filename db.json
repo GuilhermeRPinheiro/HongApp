@@ -97,6 +97,14 @@
       "preco": "32",
       "category": "Yakissoba",
       "imagem": "https://melepimenta.com/wp-content/uploads/2021/01/Yakisoba-frango-legumes-Baixa-6.jpg"
+    },
+    {
+      "id": "7b7d",
+      "nome": "Harumaki de camarão",
+      "descricao": "dawdwa",
+      "preco": "22",
+      "category": "Entradas",
+      "imagem": "https://alloydeliveryimages.s3.sa-east-1.amazonaws.com/item_images/3694/650650f5ae4edxvpiz.webp"
     }
   ]
 }
