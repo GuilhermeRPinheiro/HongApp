@@ -6,7 +6,8 @@
       "password": "adminpassword",
       "name": "MarlonTeste",
       "adress": "Rua 123",
-      "role": "admin"
+      "role": "admin",
+      "profilePicture": "/images/User5.png"
     },
     {
       "id": "2",
@@ -14,7 +15,8 @@
       "password": "adminpassword",
       "name": "GuilhermeTeste",
       "adress": "Rua 123",
-      "role": "admin"
+      "role": "admin",
+      "profilePicture": "/images/User6.png"
     },
     {
       "id": "3",
@@ -22,7 +24,8 @@
       "password": "123456789",
       "name": "Otavio",
       "adress": "Rua 123",
-      "role": "user"
+      "role": "user",
+      "profilePicture": "/images/User3.png"
     },
     {
       "id": "4",
@@ -30,65 +33,114 @@
       "password": "123456789",
       "name": "Christian",
       "adress": "Rua 123",
-      "role": "user"
+      "role": "user",
+      "profilePicture": "/images/User1.png"
     },
     {
-      "id": "6",
+      "id": "5",
       "email": "pablo@teste.com",
       "password": "123456789",
       "name": "Pablo",
       "adress": "Rua 123",
-      "role": "user"
+      "role": "user",
+      "profilePicture": "/images/User4.png"
+    },
+    {
+      "id": "6",
+      "email": "luis@teste.com",
+      "password": "123456789",
+      "name": "Luis",
+      "adress": "Rua 123",
+      "role": "user",
+      "profilePicture": "/images/User2.png"
     }
   ],
   "pratos": [
     {
       "id": "18ed",
-      "nome": "Guioza de Porco (7 unid)",
-      "preco": 24.9,
-      "imagem": "/src/assets/Guioza_Porco.svg",
-      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro.",
-      "category": "Entradas"
-    },
-    {
-      "id": "1986",
-      "nome": "Rolinho Primavera (5un)",
-      "preco": 24.9,
-      "imagem": "/src/assets/Rolinho_Primavera.svg",
+      "nome": "Rolinhos Primavera (5unid)",
+      "preco": 19.9,
+      "imagem": "/images/Rolinho_Primavera.svg",
       "descricao": "Clássico recheado com legumes, servido com molho agridoce.",
       "category": "Entradas"
     },
     {
-      "id": "9144",
+      "id": "19ed",
+      "nome": "Guioza de Porco (7 unid)",
+      "preco": 24.9,
+      "imagem": "/images/Guioza_Porco.svg",
+      "descricao": "Pastéis japoneses recheados, crocantes e suculentos por dentro.",
+      "category": "Entradas"
+    },
+    {
+      "id": "20ed",
       "nome": "Shimeji na Manteiga",
-      "preco": 39.9,
-      "imagem": "/src/assets/Shimeji_Manteiga.svg",
+      "preco": 27.9,
+      "imagem": "/images/Shimeji_Manteiga.svg",
       "descricao": "Cogumelos salteados com manteiga e cebolinha.",
       "category": "Entradas"
     },
     {
-      "id": "6ebb",
+      "id": "1Yak",
       "nome": "Yakissoba de Camarão",
       "preco": 39.9,
-      "imagem": "/src/assets/Yaki_Camarao.svg",
+      "imagem": "/images/Yaki_Camarao.svg",
       "descricao": "Camarões salteados com legumes frescos e molho oriental.",
       "category": "Yakissoba"
     },
     {
-      "id": "ae31",
-      "nome": "Yakissoba de Porco",
-      "preco": 39.9,
-      "imagem": "/src/assets/Yaki_Porco.svg",
-      "descricao": "Barriga de porco caramelizada com molho picante.",
+      "id": "2Yak",
+      "nome": "Yakissoba Vegetariano",
+      "preco": 32.9,
+      "imagem": "/images/Yaki_Vegetariano.svg",
+      "descricao": "Legumes temperados com molho 100% vegetal.",
       "category": "Yakissoba"
     },
     {
-      "id": "ae31",
-      "nome": "Yakissoba Vegetariano",
-      "preco": 39.9,
-      "imagem": "/src/assets/Yaki_Vegetariano.svg",
-      "descricao": "Legumes temperados com molho 100% vegetal.",
+      "id": "3Yak",
+      "nome": "Yakissoba de Porco",
+      "preco": 42.9,
+      "imagem": "/images/Yaki_Porco.svg",
+      "descricao": "Barriga de porco caramelizada com molho picante.",
       "category": "Yakissoba"
+    }
+  ],
+  "pedidos": [
+    {
+      "id": "pedido_abc1",
+      "userId": "1",
+      "userName": "MarlonTeste",
+      "userPhoto": "/images/User5.png",
+      "totalValue": 71,
+      "items": [
+        {
+          "id": "18ed",
+          "name": "Guioza de Porco (7 unid)",
+          "price": 24.9,
+          "quantity": 1,
+          "imageURL": "/images/Guioza_Porco.svg"
+        }
+      ],
+      "date": "2025-06-07T10:00:00.000Z",
+      "status": "pendente"
+    },
+    {
+      "id": "29d4",
+      "userId": "3",
+      "userName": "Otavio",
+      "userPhoto": "/images/User3.png",
+      "totalValue": 19.9,
+      "items": [
+        {
+          "id": "18ed",
+          "name": "Rolinhos Primavera (5unid)",
+          "price": 19.9,
+          "quantity": 1,
+          "imageURL": "/images/Rolinho_Primavera.svg"
+        }
+      ],
+      "date": "2025-06-07T04:30:47.600Z",
+      "status": "confirmado"
     }
   ]
 }

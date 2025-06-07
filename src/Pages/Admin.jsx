@@ -1,44 +1,66 @@
-import React, { useState, useEffect } from 'react'
-import { useAuth } from '../Contexts/AuthContext'
-import Swal from 'sweetalert2'
-import { Link } from 'react-router-dom'
-import Footer from '../Components/Footer'
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../Contexts/AuthContext';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
+import Footer from '../Components/Footer';
+import { Card } from 'flowbite-react'; // Importe Card do Flowbite
 
 function Admin() {
-  const { user, isAuthenticated, isAdmin } = useAuth()
-  const [users, setUsers] = useState([])
-  const [pratos, setPratos] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const { user, isAuthenticated, isAdmin } = useAuth();
+  const [users, setUsers] = useState([]);
+  const [pratos, setPratos] = useState([]);
+  const [pedidos, setPedidos] = useState([]); // Novo estado para os pedidos
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:3000/users')
-      if (!response.ok) throw new Error(`Erro ao carregar usuários: ${response.status} ${response.statusText}`)
-      const data = await response.json()
-      setUsers(data)
+      const response = await fetch('http://localhost:3000/users');
+      if (!response.ok) throw new Error(`Erro ao carregar usuários: ${response.status} ${response.statusText}`);
+      const data = await response.json();
+      setUsers(data);
     } catch (err) {
-      console.error("Erro ao buscar usuários:", err)
-      setError("Não foi possível carregar a lista de usuários.")
+      console.error("Erro ao buscar usuários:", err);
+      setError("Não foi possível carregar a lista de usuários.");
     }
-  }
+  };
 
   const fetchPratos = async () => {
     try {
-      const response = await fetch('http://localhost:3000/pratos')
-      if (!response.ok) throw new Error(`Erro ao carregar pratos: ${response.status} ${response.statusText}`)
-      const data = await response.json()
+      const response = await fetch('http://localhost:3000/pratos');
+      if (!response.ok) throw new Error(`Erro ao carregar pratos: ${response.status} ${response.statusText}`);
+      const data = await response.json();
       const pratosAjustados = data.map(p => ({
         ...p,
-        preco: parseFloat(p.preco) || 0,
+        // Garante que 'preco' seja número e renomeia 'nome' para 'name', 'imagem' para 'imageURL'
+        // se você não atualizou seu db.json conforme sugerido anteriormente.
+        // Se você já renomeou no db.json, pode remover estas linhas de mapeamento de nome/imagem.
+        name: p.nome || p.name, // Usa p.nome se existir, senão p.name (para compatibilidade)
+        imageURL: p.imagem || p.imageURL, // Usa p.imagem se existir, senão p.imageURL
+        price: parseFloat(p.preco) || 0,
         category: p.category || 'Não Especificado'
-      }))
-      setPratos(pratosAjustados)
+      }));
+      setPratos(pratosAjustados);
     } catch (err) {
-      console.error("Erro ao buscar pratos:", err)
-      setError("Não foi possível carregar a lista de pratos.")
+      console.error("Erro ao buscar pratos:", err);
+      setError("Não foi possível carregar a lista de pratos.");
     }
-  }
+  };
+
+  // NOVA FUNÇÃO: Para buscar os pedidos
+  const fetchPedidos = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/pedidos');
+      if (!response.ok) throw new Error(`Erro ao carregar pedidos: ${response.status} ${response.statusText}`);
+      const data = await response.json();
+      // Ordena os pedidos do mais novo para o mais antigo
+      const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      setPedidos(sortedData);
+    } catch (err) {
+      console.error("Erro ao buscar pedidos:", err);
+      setError("Não foi possível carregar a lista de pedidos.");
+    }
+  };
 
   const deleteUser = async (userId, userName) => {
     Swal.fire({
@@ -50,17 +72,17 @@ function Admin() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await fetch(`http://localhost:3000/users/${userId}`, { method: 'DELETE' })
-          if (!response.ok) throw new Error(`Erro ao deletar usuário: ${response.status} ${response.statusText}`)
-          setUsers(prevUsers => prevUsers.filter(user => user.id !== userId))
-          Swal.fire('Deletado!', `O usuário ${userName} foi deletado com sucesso.`, 'success')
+          const response = await fetch(`http://localhost:3000/users/${userId}`, { method: 'DELETE' });
+          if (!response.ok) throw new Error(`Erro ao deletar usuário: ${response.status} ${response.statusText}`);
+          setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
+          Swal.fire('Deletado!', `O usuário ${userName} foi deletado com sucesso.`, 'success');
         } catch (err) {
-          console.error("Erro ao deletar usuário:", err)
-          Swal.fire('Erro!', `Não foi possível deletar o usuário ${userName}. ${err.message}`, 'error')
+          console.error("Erro ao deletar usuário:", err);
+          Swal.fire('Erro!', `Não foi possível deletar o usuário ${userName}. ${err.message}`, 'error');
         }
       }
-    })
-  }
+    });
+  };
 
   const deletePrato = async (pratoId, pratoNome) => {
     Swal.fire({
@@ -72,37 +94,43 @@ function Admin() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await fetch(`http://localhost:3000/pratos/${pratoId}`, { method: 'DELETE' })
-          if (!response.ok) throw new Error(`Erro ao deletar prato: ${response.status} ${response.statusText}`)
-          setPratos(prevPratos => prevPratos.filter(prato => prato.id !== pratoId))
-          Swal.fire('Deletado!', `O prato ${pratoNome} foi deletado com sucesso.`, 'success')
+          const response = await fetch(`http://localhost:3000/pratos/${pratoId}`, { method: 'DELETE' });
+          if (!response.ok) throw new Error(`Erro ao deletar prato: ${response.status} ${response.statusText}`);
+          setPratos(prevPratos => prevPratos.filter(prato => prato.id !== pratoId));
+          Swal.fire('Deletado!', `O prato ${pratoNome} foi deletado com sucesso.`, 'success');
         } catch (err) {
-          console.error("Erro ao deletar prato:", err)
-          Swal.fire('Erro!', `Não foi possível deletar o prato ${pratoNome}. ${err.message}`, 'error')
+          console.error("Erro ao deletar prato:", err);
+          Swal.fire('Erro!', `Não foi possível deletar o prato ${pratoNome}. ${err.message}`, 'error');
         }
       }
-    })
-  }
+    });
+  };
+
+  // NOVA FUNÇÃO: Para lidar com a impressão dos relatórios
+  const handlePrint = () => {
+    window.print();
+  };
 
   useEffect(() => {
     if (isAuthenticated && isAdmin()) {
-      Promise.all([fetchUsers(), fetchPratos()])
-        .finally(() => setLoading(false))
+      // Busca todos os dados em paralelo
+      Promise.all([fetchUsers(), fetchPratos(), fetchPedidos()])
+        .finally(() => setLoading(false));
     } else {
-      setLoading(false)
+      setLoading(false);
     }
-  }, [isAuthenticated, isAdmin])
+  }, [isAuthenticated, isAdmin]);
 
   if (loading) {
-    return <div className="flex justify-center items-center h-screen text-white text-2xl">Carregando dados de administração...</div>
+    return <div className="flex justify-center items-center h-screen text-white text-2xl">Carregando dados de administração...</div>;
   }
 
   if (error) {
-    return <div className="flex justify-center items-center h-screen text-red-500 text-2xl">{error}</div>
+    return <div className="flex justify-center items-center h-screen text-red-500 text-2xl">{error}</div>;
   }
 
   if (!isAuthenticated || !isAdmin()) {
-    return <div className="flex justify-center items-center h-screen text-red-500 text-2xl">Acesso Negado: Você não tem permissão de administrador.</div>
+    return <div className="flex justify-center items-center h-screen text-red-500 text-2xl">Acesso Negado: Você não tem permissão de administrador.</div>;
   }
 
   return (
@@ -189,10 +217,12 @@ function Admin() {
             ))}
           </div>
         )}
+
+        
       </div>
       <Footer />
     </>
-  )
+  );
 }
 
-export default Admin
+export default Admin;

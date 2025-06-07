@@ -12,7 +12,7 @@ import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import RelatorioPage from './Pages/Relatórios'
 import { AuthProvider } from './Contexts/AuthContext'; 
-import { CartProvider } from './contexts/CartContext'; 
+import { CartProvider } from './Contexts/CartContext'; 
 import CriarPrato from './Pages/CriarPrato';
 import EditarPrato from './Pages/EditarPrato';
 

@@ -1,9 +1,67 @@
 import React from 'react';
-import { useCart } from '../contexts/CartContext'; // Importa SEU hook useCart
-import { Link } from 'react-router-dom';
+import { useCart } from '../Contexts/CartContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../Contexts/AuthContext'; // <--- Importe useAuth
 
 function Carrinho() {
-  const { cartItems, addToCart, updateQuantity, removeFromCart, getCartItemCount, getCartTotal, clearCart } = useCart();
+  const { cartItems, updateQuantity, removeFromCart, getCartItemCount, getCartTotal, clearCart } = useCart();
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth(); // <--- Obtenha o usuário e o status de autenticação
+
+  const handleFinalizarPedido = async () => {
+    if (cartItems.length === 0) {
+      alert("Seu carrinho está vazio. Adicione itens antes de finalizar o pedido.");
+      return;
+    }
+
+    // VERIFICA SE HÁ UM USUÁRIO LOGADO PARA CRIAR O PEDIDO
+    if (!isAuthenticated || !user || !user.id) {
+      alert("Você precisa estar logado para finalizar um pedido.");
+      navigate('/login'); // Redireciona para a página de login se não estiver logado
+      return;
+    }
+
+    // AQUI USAMOS O 'user' REAL DO CONTEXTO DE AUTENTICAÇÃO
+    const novoPedido = {
+      userId: user.id,
+      userName: user.name,
+      userPhoto: user.profilePicture, // Puxa a profilePicture do usuário logado
+      totalValue: getCartTotal(),
+      items: cartItems.map(item => ({ // Mapeia os itens do carrinho para o formato do pedido
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        imageURL: item.imageURL
+      })),
+      date: new Date().toISOString(),
+      status: 'confirmado' // Mudança aqui!
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/pedidos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(novoPedido),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erro ao finalizar pedido: ${response.statusText}`);
+      }
+
+      const pedidoSalvo = await response.json();
+      console.log('Pedido finalizado com sucesso:', pedidoSalvo);
+
+      clearCart();
+      alert('Pedido finalizado com sucesso! ID do Pedido: ' + pedidoSalvo.id);
+      navigate('/relatorios');
+    } catch (error) {
+      console.error('Erro ao finalizar o pedido:', error);
+      alert('Houve um erro ao finalizar o pedido. Tente novamente mais tarde.');
+    }
+  };
 
   return (
     <div className="pt-10 p-5 flex flex-col items-center justify-center min-h-screen bg-transparent text-white">
@@ -37,22 +95,22 @@ function Carrinho() {
               </div>
               <span className="w-24 text-center text-lg">R$ {item.price.toFixed(2)}</span>
               <div className="w-32 flex items-center justify-center gap-2">
-                <button 
+                <button
                   onClick={() => updateQuantity(item.id, item.quantity - 1)}
                   className="bg-red-600 hover:bg-red-700 text-white p-2 rounded-md "
                 >
                   -
                 </button>
                 <span className="text-xl font-bold">{item.quantity}</span>
-                <button 
+                <button
                   onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                  className="bg-[#f16c1d]  text-white p-2 rounded-md "
+                  className="bg-[#f16c1d]  text-white p-2 rounded-md "
                 >
                   +
                 </button>
               </div>
               <span className="w-24 text-center text-lg">R$ {(item.price * item.quantity).toFixed(2)}</span>
-              <button 
+              <button
                 onClick={() => removeFromCart(item.id)}
                 className="w-25 bg-gray-600 hover:bg-gray-700 text-white p-4 rounded-md ml-2"
               >
@@ -70,13 +128,16 @@ function Carrinho() {
               <span>Valor Total:</span>
               <span>R$ {getCartTotal().toFixed(2)}</span>
             </div>
-            <button 
+            <button
               onClick={clearCart}
               className="w-full mt-4 bg-[#f16c1d] hover:bg-yellow-700 text-white text-xl font-bold py-3 rounded-lg transition duration-300"
             >
               Limpar Carrinho
             </button>
-            <button className="w-full mt-2 bg-red-600 hover:bg-red-700 text-white text-xl font-bold py-3 rounded-lg transition duration-300">
+            <button
+              onClick={handleFinalizarPedido}
+              className="w-full mt-2 bg-red-600 hover:bg-red-700 text-white text-xl font-bold py-3 rounded-lg transition duration-300"
+            >
               Finalizar Pedido
             </button>
           </div>

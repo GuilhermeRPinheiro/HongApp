@@ -21,12 +21,22 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (item) => {
-    // Verifica se o item já está no carrinho
+  // Modificação no addToCart para aceitar um item completo e mapear nomes se necessário
+  const addToCart = (item) => { // 'item' agora é o objeto 'prato' completo
     const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.id);
 
+    // Mapeia as propriedades do 'prato' para o formato 'item' do carrinho
+    const itemToAdd = {
+      id: item.id,
+      name: item.nome || item.name, // Usa 'nome' do prato ou 'name' se já ajustado no db.json
+      price: item.preco || item.price, // Usa 'preco' do prato ou 'price'
+      imageURL: item.imagem || item.imageURL, // Usa 'imagem' do prato ou 'imageURL'
+      description: item.descricao || item.description, // Usa 'descricao' ou 'description'
+      // ... outras propriedades que você queira manter
+    };
+
+
     if (existingItemIndex > -1) {
-      // Se o item já existe, aumenta a quantidade
       const updatedCartItems = cartItems.map((cartItem, index) =>
         index === existingItemIndex
           ? { ...cartItem, quantity: cartItem.quantity + 1 }
@@ -37,19 +47,18 @@ export const CartProvider = ({ children }) => {
         toast: true,
         position: 'top-end',
         icon: 'success',
-        title: `${item.name} adicionado novamente ao carrinho!`,
+        title: `${itemToAdd.name} adicionado novamente ao carrinho!`, // Usa itemToAdd.name
         showConfirmButton: false,
         timer: 1500,
         timerProgressBar: true,
       });
     } else {
-      // Se o item é novo, adiciona-o com quantidade 1
-      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+      setCartItems([...cartItems, { ...itemToAdd, quantity: 1 }]); // Adiciona itemToAdd
       Swal.fire({
         toast: true,
         position: 'top-end',
         icon: 'success',
-        title: `${item.name} adicionado ao carrinho!`,
+        title: `${itemToAdd.name} adicionado ao carrinho!`, // Usa itemToAdd.name
         showConfirmButton: false,
         timer: 1500,
         timerProgressBar: true,
