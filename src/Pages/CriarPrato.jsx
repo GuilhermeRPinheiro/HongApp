@@ -8,7 +8,7 @@ function CriarPrato() {
     nome: '',
     descricao: '',
     preco: '',
-    categoria: '',
+    category: '',
     imagem: ''
   });
 
@@ -46,7 +46,7 @@ function CriarPrato() {
           <input type="text" name="nome" placeholder="Nome" onChange={handleChange} required className='border p-1 rounded-[0.3rem]'/>
           <textarea name="descricao" placeholder="Descrição" onChange={handleChange} required className='border p-1 rounded-[0.3rem]'/>
           <input type="number" name="preco" placeholder="Preço" onChange={handleChange} required className='border p-1 rounded-[0.3rem]'/>
-          <input type="text" name="categoria" placeholder="Categoria (Ex: Yakissoba)" onChange={handleChange} required className='border p-1 rounded-[0.3rem]' />
+          <input type="text" name="category" placeholder="Categoria (Ex: Yakissoba)" onChange={handleChange} required className='border p-1 rounded-[0.3rem]' />
           <input type="text" name="imagem" placeholder="URL da imagem" onChange={handleChange} className='border p-1 rounded-[0.3rem]'/>
           <button type="submit" className="bg-red-600 text-white p-2 rounded">Salvar Prato</button>
         </form>

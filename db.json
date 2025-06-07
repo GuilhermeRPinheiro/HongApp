@@ -41,7 +41,7 @@
       "role": "user"
     }
   ],
-   "pratos": [
+  "pratos": [
     {
       "id": "18ed",
       "nome": "Guioza de Porco (7 unid)",
@@ -56,7 +56,7 @@
       "preco": 24.9,
       "imagem": "/src/assets/Rolinho_Primavera.svg",
       "descricao": "Clássico recheado com legumes, servido com molho agridoce.",
-      "category": "Entradas" 
+      "category": "Entradas"
     },
     {
       "id": "9144",
@@ -64,7 +64,7 @@
       "preco": 39.9,
       "imagem": "/src/assets/Shimeji_Manteiga.svg",
       "descricao": "Cogumelos salteados com manteiga e cebolinha.",
-      "category": "Entradas" 
+      "category": "Entradas"
     },
     {
       "id": "6ebb",
@@ -72,7 +72,7 @@
       "preco": 39.9,
       "imagem": "/src/assets/Yaki_Camarao.svg",
       "descricao": "Camarões salteados com legumes frescos e molho oriental.",
-      "category": "Yakissoba" 
+      "category": "Yakissoba"
     },
     {
       "id": "ae31",
@@ -80,7 +80,7 @@
       "preco": 39.9,
       "imagem": "/src/assets/Yaki_Porco.svg",
       "descricao": "Barriga de porco caramelizada com molho picante.",
-      "category": "Yakissoba" 
+      "category": "Yakissoba"
     },
     {
       "id": "ae31",
@@ -88,7 +88,15 @@
       "preco": 39.9,
       "imagem": "/src/assets/Yaki_Vegetariano.svg",
       "descricao": "Legumes temperados com molho 100% vegetal.",
-      "category": "Yakissoba" 
+      "category": "Yakissoba"
+    },
+    {
+      "id": "cc1b",
+      "nome": "yakissoba de legumes",
+      "descricao": "dwadaw",
+      "preco": "32",
+      "category": "Yakissoba",
+      "imagem": "https://melepimenta.com/wp-content/uploads/2021/01/Yakisoba-frango-legumes-Baixa-6.jpg"
     }
   ]
 }
