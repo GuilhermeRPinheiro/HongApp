@@ -9,7 +9,7 @@ function Menu() {
   const [pratos, setPratos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function fetchPratos() {

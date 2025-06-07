@@ -90,13 +90,13 @@
       "descricao": "Legumes temperados com molho 100% vegetal.",
       "category": "Yakissoba"
     },
-    {
-      "id": "fa21",
-      "nome": "Yakissoba Teste",
-      "descricao": "xasaa",
-      "preco": "30",
-      "categoria": "Yakissoba",
-      "imagem": "https://boomi.b-cdn.net/wp-content/uploads/2022/08/FR055.jpg"
+  {
+      "id": "cc1b",
+      "nome": "yakissoba de legumes",
+      "descricao": "dwadaw",
+      "preco": "32",
+      "category": "Yakissoba",
+      "imagem": "https://melepimenta.com/wp-content/uploads/2021/01/Yakisoba-frango-legumes-Baixa-6.jpg"
     }
   ]
 }
