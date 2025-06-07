@@ -1,4 +1,3 @@
-// src/Components/Navbar.jsx
 import Logo from '../assets/Logo.svg'
 import { Link } from 'react-router-dom'
 import {
@@ -33,7 +32,7 @@ export function MyNavbar() {
             label={
               <Avatar
                 alt="User settings"
-                // Mude 'profilePic' para 'profilePicture' para corresponder ao seu db.json
+               
                 img={user?.profilePicture || "https://flowbite.com/docs/images/people/profile-picture-5.jpg"}
                 rounded
               />

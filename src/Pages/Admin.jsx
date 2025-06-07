@@ -217,8 +217,6 @@ function Admin() {
             ))}
           </div>
         )}
-
-        
       </div>
       <Footer />
     </>

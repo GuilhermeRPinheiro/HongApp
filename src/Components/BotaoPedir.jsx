@@ -1,6 +1,3 @@
-// src/Components/BotaoPedir.jsx
-import React from 'react'; 
-
 function BotaoPedir({ onClick }) { 
   return (
     <button 

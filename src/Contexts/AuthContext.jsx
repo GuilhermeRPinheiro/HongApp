@@ -1,46 +1,45 @@
-// src/Contexts/AuthContext.jsx
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react'
 import Swal from 'sweetalert2';
 
-export const AuthContext = createContext();
+export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true); // Adiciona estado de carregamento
+  const [user, setUser] = useState(null)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const loadUserFromLocalStorage = async () => {
       try {
-        const storedUser = localStorage.getItem('user');
+        const storedUser = localStorage.getItem('user')
         if (storedUser) {
-          const parsedUser = JSON.parse(storedUser);
-          setUser(parsedUser);
-          setIsAuthenticated(true);
+          const parsedUser = JSON.parse(storedUser)
+          setUser(parsedUser)
+          setIsAuthenticated(true)
         }
       } catch (error) {
-        console.error("Erro ao carregar usuário do localStorage:", error);
-        localStorage.removeItem('user'); // Limpa se estiver corrompido
+        console.error("Erro ao carregar usuário do localStorage:", error)
+        localStorage.removeItem('user')
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
-    loadUserFromLocalStorage();
-  }, []);
+    }
+    loadUserFromLocalStorage()
+  }, [])
 
   const login = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:3000/users');
+      const response = await fetch('http://localhost:3000/users')
       if (!response.ok) {
-        throw new Error('Erro ao buscar usuários.');
+        throw new Error('Erro ao buscar usuários.')
       }
-      const users = await response.json();
-      const foundUser = users.find(u => u.email === email && u.password === password);
+      const users = await response.json()
+      const foundUser = users.find(u => u.email === email && u.password === password)
 
       if (foundUser) {
-        setUser(foundUser);
-        setIsAuthenticated(true);
-        localStorage.setItem('user', JSON.stringify(foundUser)); // Salva o user completo
+        setUser(foundUser)
+        setIsAuthenticated(true)
+        localStorage.setItem('user', JSON.stringify(foundUser))
         Swal.fire({
           toast: true,
           position: 'top-end',
@@ -48,31 +47,31 @@ export const AuthProvider = ({ children }) => {
           title: `Bem-vindo, ${foundUser.name}!`,
           showConfirmButton: false,
           timer: 1500
-        });
-        return true;
+        })
+        return true
       } else {
         Swal.fire({
           icon: 'error',
           title: 'Erro de Login',
           text: 'Email ou senha inválidos!'
-        });
-        return false;
+        })
+        return false
       }
     } catch (error) {
-      console.error("Erro no login:", error);
+      console.error("Erro no login:", error)
       Swal.fire({
         icon: 'error',
         title: 'Erro',
         text: 'Não foi possível conectar ao servidor de autenticação.'
-      });
-      return false;
+      })
+      return false
     }
-  };
+  }
 
   const logout = () => {
-    setUser(null);
-    setIsAuthenticated(false);
-    localStorage.removeItem('user');
+    setUser(null)
+    setIsAuthenticated(false)
+    localStorage.removeItem('user')
     Swal.fire({
       toast: true,
       position: 'top-end',
@@ -80,34 +79,34 @@ export const AuthProvider = ({ children }) => {
       title: 'Você foi desconectado.',
       showConfirmButton: false,
       timer: 1500
-    });
-  };
+    })
+  }
 
   const isAdmin = () => {
-    return user && user.role === 'admin';
-  };
+    return user && user.role === 'admin'
+  }
 
-  // NOVA FUNÇÃO: Para atualizar o estado do usuário no contexto
+ 
   const updateUser = (updatedUserData) => {
     setUser(prevUser => {
-      const newUserState = { ...prevUser, ...updatedUserData };
-      localStorage.setItem('user', JSON.stringify(newUserState)); // Atualiza no localStorage também
-      return newUserState;
-    });
-  };
+      const newUserState = { ...prevUser, ...updatedUserData }
+      localStorage.setItem('user', JSON.stringify(newUserState))
+      return newUserState
+    })
+  }
 
-  // Garante que o loading seja falso para evitar que PrivateRoute/AdminRoute bloqueiem antes do carregamento
+  
   if (loading) {
-    return <div></div>; // Ou um spinner de carregamento global
+    return <div></div>
   }
 
   return (
     <AuthContext.Provider value={{ user, isAuthenticated, login, logout, isAdmin, updateUser }}>
       {children}
     </AuthContext.Provider>
-  );
-};
+  )
+}
 
 export const useAuth = () => {
-  return useContext(AuthContext);
-};
+  return useContext(AuthContext)
+}

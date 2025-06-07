@@ -206,6 +206,25 @@
       "date": "2025-06-07T05:10:30.824Z",
       "status": "avaliado",
       "orderRating": 5
+    },
+    {
+      "id": "6de8",
+      "userId": "6",
+      "userName": "Luis",
+      "userPhoto": "/images/User2.png",
+      "totalValue": 24.9,
+      "items": [
+        {
+          "id": "18ed",
+          "name": "Guioza de Porco (7 unid)",
+          "price": 24.9,
+          "quantity": 1,
+          "imageURL": "/src/assets/Guioza_Porco.svg"
+        }
+      ],
+      "date": "2025-06-07T05:50:40.352Z",
+      "status": "avaliado",
+      "orderRating": 3
     }
   ],
   "reviews": []
