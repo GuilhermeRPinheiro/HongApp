@@ -1,4 +1,3 @@
-// src/pages/Admin.jsx
 import React, { useState, useEffect } from 'react'
 import { useAuth } from '../Contexts/AuthContext'
 import Swal from 'sweetalert2'
@@ -115,8 +114,8 @@ function Admin() {
         {users.length === 0 ? (
           <div className="text-xl text-gray-400">Nenhum usuário cadastrado.</div>
         ) : (
-          <div className="w-full max-w-3xl  bg-[#A62C2C] rounded-lg shadow-lg overflow-hidden">
-            <div className="flex justify-between items-center bg-[#EB2E2E]  p-4 font-bold text-lg">
+          <div className="w-full max-w-3xl bg-[#A62C2C] rounded-lg shadow-lg overflow-hidden">
+            <div className="flex justify-between items-center bg-[#EB2E2E] p-4 font-bold text-lg">
               <span className="w-1/4">ID</span>
               <span className="w-1/4">Nome</span>
               <span className="w-1/4">Email</span>
@@ -173,6 +172,12 @@ function Admin() {
                   R$ {prato.preco !== undefined && prato.preco !== null ? prato.preco.toFixed(2) : '0.00'}
                 </span>
                 <div className="w-1/4 flex justify-center space-x-2">
+                  <Link
+                    to={`/editarprato/${prato.id}`}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm cursor-pointer"
+                  >
+                    Editar
+                  </Link>
                   <button
                     onClick={() => deletePrato(prato.id, prato.nome)}
                     className="bg-[#f16c1d] hover:bg-red-700 text-white px-3 py-1 rounded-md text-sm cursor-pointer"

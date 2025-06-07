@@ -14,6 +14,7 @@ import RelatorioPage from './Pages/Relatórios'
 import { AuthProvider } from './Contexts/AuthContext'; 
 import { CartProvider } from './contexts/CartContext'; 
 import CriarPrato from './Pages/CriarPrato';
+import EditarPrato from './Pages/EditarPrato';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/cardapio" element={<MenuPage />} /> 
             <Route path="/login" element={<LoginPage />} />
           <Route path="/criarprato" element={<CriarPrato />} />
+          <Route path="/editarprato/:id" element={<EditarPrato />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/profile" element={<PrivateRoute><ProfilePage/></PrivateRoute>}/>
             <Route path="/carrinho" element={<PrivateRoute><CarrinhoPage/></PrivateRoute>}/> 
