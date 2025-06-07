@@ -1,21 +1,21 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'
 
-import HomePage from './Pages/Home';
-import LoginPage from './Pages/Login';
-import RegisterPage from './Pages/Register';
-import MenuPage from './Pages/Menu';
-import CarrinhoPage from './Pages/Carrinho';
-import { MyNavbar } from './Components/Navbar';
-import ProfilePage from './Pages/Perfil';
-import AdminPage from './Pages/Admin';
-import PrivateRoute from './components/PrivateRoute';
-import AdminRoute from './components/AdminRoute';
+import MenuPage from './Pages/Menu'
+import HomePage from './Pages/Home'
+import LoginPage from './Pages/Login'
+import RegisterPage from './Pages/Register'
+import CarrinhoPage from './Pages/Carrinho'
+import { MyNavbar } from './Components/Navbar'
+import ProfilePage from './Pages/Perfil'
+import AdminPage from './Pages/Admin'
+import PrivateRoute from './components/PrivateRoute'
+import AdminRoute from './components/AdminRoute'
 import RelatorioPage from './Pages/Relatórios'
-import { AuthProvider } from './Contexts/AuthContext'; 
-import { CartProvider } from './Contexts/CartContext'; 
-import CriarPrato from './Pages/CriarPrato';
-import EditarPrato from './Pages/EditarPrato';
-
+import { AuthProvider } from './Contexts/AuthContext'
+import { CartProvider } from './Contexts/CartContext'
+import CriarPrato from './Pages/CriarPrato'
+import EditarPrato from './Pages/EditarPrato'
+import HistoricoPage from './Pages/Historico'
 function App() {
   return (
     <AuthProvider>
@@ -31,6 +31,7 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/profile" element={<PrivateRoute><ProfilePage/></PrivateRoute>}/>
             <Route path="/carrinho" element={<PrivateRoute><CarrinhoPage/></PrivateRoute>}/> 
+            <Route path="/historico" element={<PrivateRoute><HistoricoPage/></PrivateRoute>}/> 
             <Route path="/admin" element={<AdminRoute><AdminPage/></AdminRoute>}/> 
             <Route path="/relatorios" element={<AdminRoute><RelatorioPage/></AdminRoute>}/> 
           </Routes>

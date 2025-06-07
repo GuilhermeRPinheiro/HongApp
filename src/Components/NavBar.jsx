@@ -44,6 +44,7 @@ export function MyNavbar() {
               <span className="text-black font-['Sawarabi_Gothic']  block truncate text-sm font-medium">{user?.email}</span>
             </DropdownHeader>
             <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']"  as={Link} to="/profile">Perfil</DropdownItem>
+            <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']"  as={Link} to="/historico">Histórico de Compra</DropdownItem>
             {isAdmin() && (
               <>
               <DropdownItem className="!text-black drop-fundo font-['Sawarabi_Gothic']" as ={Link} to ="/admin">Admin Config</DropdownItem>
