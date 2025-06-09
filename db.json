@@ -10,22 +10,22 @@
       "id": "1"
     },
     {
-      "id": "2",
+      "name": "Guilherme Pinheiro",
       "email": "guilherme@teste.com",
       "password": "adminpassword",
-      "name": "GuilhermeTeste",
       "adress": "Rua 123",
+      "profilePicture": "/images/User6.png",
       "role": "admin",
-      "profilePicture": "/images/User6.png"
+      "id": "2"
     },
     {
-      "id": "3",
+      "name": "Otavio Teste",
       "email": "otavio@teste.com",
-      "password": "123456789",
-      "name": "Otavio",
-      "adress": "Rua 123",
+      "password": "otavioteste",
+      "adress": "Rua 12345678",
+      "profilePicture": "/images/User3.png",
       "role": "user",
-      "profilePicture": "/images/User3.png"
+      "id": "3"
     },
     {
       "id": "4",
@@ -37,13 +37,13 @@
       "profilePicture": "/images/User1.png"
     },
     {
-      "id": "5",
+      "name": "Pablo",
       "email": "pablo@teste.com",
       "password": "123456789",
-      "name": "Pablo",
       "adress": "Rua 123",
+      "profilePicture": "https://media.istockphoto.com/id/482166286/photo/growing-up.webp?b=1&s=612x612&w=0&k=20&c=MhF6PGST0uWzW-0YxQNrwkjF5MaqENy3tvCc0Souabc=",
       "role": "user",
-      "profilePicture": "/images/User4.png"
+      "id": "5"
     },
     {
       "id": "6",
@@ -108,7 +108,7 @@
   "pedidos": [
     {
       "id": "6de8",
-      "userId": "6",
+      "userId": null,
       "userName": "Luis",
       "userPhoto": "/images/User2.png",
       "totalValue": 24.9,
@@ -124,6 +124,32 @@
       "date": "2025-06-07T05:50:40.352Z",
       "status": "avaliado",
       "orderRating": 3
+    },
+    {
+      "id": "208c",
+      "userId": "3",
+      "userName": "Otavio Teste",
+      "userPhoto": "/images/User3.png",
+      "totalValue": 179.2,
+      "items": [
+        {
+          "id": "18ed",
+          "name": "Rolinhos Primavera (5unid)",
+          "price": 19.9,
+          "quantity": 4,
+          "imageURL": "/images/Rolinho_Primavera.svg"
+        },
+        {
+          "id": "19ed",
+          "name": "Guioza de Porco (7 unid)",
+          "price": 24.9,
+          "quantity": 4,
+          "imageURL": "/images/Guioza_Porco.svg"
+        }
+      ],
+      "date": "2025-06-08T15:14:49.000Z",
+      "status": "avaliado",
+      "orderRating": 5
     }
   ],
   "reviews": []

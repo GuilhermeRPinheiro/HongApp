@@ -197,7 +197,7 @@ function Admin() {
                 <span className="w-1/4 text-base break-words pr-2">{prato.nome}</span>
                 <span className="w-1/5 text-base break-words pr-2">{prato.category}</span>
                 <span className="w-[15%] text-base break-words pr-2">
-                  R$ {prato.preco !== undefined && prato.preco !== null ? prato.preco.toFixed(2) : '0.00'}
+                  R$ {prato.price !== undefined && prato.price !== null ? prato.price.toFixed(2) : '0.00'}
                 </span>
                 <div className="w-1/4 flex justify-center space-x-2">
                   <Link
